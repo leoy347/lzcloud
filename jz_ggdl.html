@@ -1,0 +1,791 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>故宫建筑导览</title>
+    <script src="js/app.js"></script>
+    <script src="js/dat.gui.min.js"></script>
+    <script src="js/lib/message.min.js"></script>
+    <link rel="stylesheet" href="js/lib/message.css">
+    <link href="js/JS5.css" rel="stylesheet" type="text/css">
+
+</head>
+<style>
+    .hot-spot{
+        white-space: nowrap;
+        font-size: 15px;
+        background-color: rgba(255,198,0,0.8);
+        padding: 5px 8px;
+        border-radius: 3px;
+        cursor: pointer;
+        background-size: cover;
+        transform: translate3d(0px,-52px,0px);
+        user-select: none;
+
+    }
+    .hot-spot:hover{
+        box-shadow: 0 0 2px #FFF;
+    }
+
+    .hot-spot:after {
+        border: 5px solid transparent;
+        border-top: 50px solid rgba(255,198,0,0.7);
+        position: absolute;
+        content: "";
+        left: 50%;
+        margin-left: -5px;
+        top: 100%;
+    }
+
+
+
+
+</style>
+
+
+
+
+
+<body style="padding: 0; margin: 0;">
+<div id="container" style="width: 100%;height: 100vh;position:absolute;">
+
+
+
+
+
+</div>
+
+</body>
+</html>
+<script>
+    const gui = new dat.GUI()
+    const param = {
+        appkey: 'OfhRUlHbYuzj',
+        appsecret: 'bt9pxZcjPJG0aiUTlV2NEwCmXyR1DK3H'
+    }
+    //创建场景
+    const viewer = new AMRT.Viewer( 'container', param )
+
+
+    //加载模型热点
+    const model = viewer.loadModel('1484472150948712448', {
+        onLoad: function( model ){
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+               console.log(object.object.name)
+                var object1 = object.object.name
+
+                var layer_1 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object1 == "thdredian") {
+                    //将屏幕坐标转换为三维坐标
+                    var p = viewer.picker.screenToVector(e)
+                    if (p) {
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("thdredian").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '太和殿',
+                            layer: layer_1  , //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                            onclick: () => {
+
+                                var au2 = new Audio("audio/gg-thd.mp3");
+
+                                au2.play();
+                            } //点击后需要执行的回调(可选)
+                        })
+                        hotspots.push(hotspot)
+                        viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow(layer_1)
+
+                    } else {
+                        Qmsg.info("未选中模型")
+                    }
+
+                }
+                    })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object2 = object.object.name
+                var layer_2 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object2 == "wumenrd") {
+                        var p = viewer.picker.screenToVector(e)
+                        if( p ){
+                            //viewer.hotSpotManager.add会返回一个热点对象
+                            let hotspot = viewer.hotSpotManager.add({
+                                objectId: model.getObjectByName("wumenrd").id,
+                                position: p,
+                                cameraView: viewer.controls.getView(),
+                                element: '午门',
+                                layer: layer_2 ,  //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                                onclick: () => {
+                                    var au2 = new Audio("audio/gg-wm.mp3");
+                                    au2.play();
+                                } //点击后需要执行的回调(可选)
+                            })
+                            hotspots.push( hotspot )
+                            viewer.container.onclick = null
+                            viewer.hotSpotManager.onlyShow( layer_2 )
+                        }else{
+                            Qmsg.info(" ")
+                        }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "bhdredian") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("bhdredian").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '保和殿',
+                            onclick: () => {
+                                var au2 = new Audio("audio/gg-bhd.mp3");
+                                au2.play();
+                            }, //点击后需要执行的回调(可选)
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object1 = object.object.name
+                var layer_1 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object1 == "zhdredian") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        //viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("zhdredian").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '中和殿',
+                            onclick: () => {
+                                var au2 = new Audio("audio/gg-zhd.mp3");
+                                au2.play();
+                            }, //点击后需要执行的回调(可选)
+                            layer: layer_1   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        hotspots.push( hotspot )
+                        viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_1 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "qqmenredian") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("qqmenredian").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '乾清门',
+                            onclick: () => {
+                                var au2 = new Audio("audio/gg-qqm.mp3");
+                                au2.play();
+                            }, //点击后需要执行的回调(可选)
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "qqgdedian") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("qqgdedian").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '乾清宫',
+                            onclick: () => {
+                                var au2 = new Audio("audio/gg-qqg.mp3");
+                                au2.play();
+                            }, //点击后需要执行的回调(可选)
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "jtdredian") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("jtdredian").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '交泰殿',
+                            onclick: () => {
+                                var au2 = new Audio("audio/gg-jtd.mp3");
+                                au2.play();
+                            }, //点击后需要执行的回调(可选)
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "kngredian") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("kngredian").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '坤宁宫',
+                            onclick: () => {
+                                var au2 = new Audio("audio/gg-kng.mp3");
+                                au2.play();
+                            }, //点击后需要执行的回调(可选)
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "yhydedian") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("yhydedian").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '御花园',
+                            onclick: () => {
+                                var au2 = new Audio("audio/gg-yhy.mp3");
+                                au2.play();
+                            }, //点击后需要执行的回调(可选)
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "yxdredian") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("yxdredian").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '养心殿',
+                            onclick: () => {
+                                var au2 = new Audio("audio/gg-yxd.mp3");
+                                au2.play();
+                            }, //点击后需要执行的回调(可选)
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object1 = object.object.name
+
+                var layer_1 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object1 == "thdredian") {
+                    //将屏幕坐标转换为三维坐标
+                    var p = viewer.picker.screenToVector(e)
+                    if (p) {
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("thdredian").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '太和殿',
+                            layer: layer_1  , //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                            onclick: () => {
+
+                                var au2 = new Audio("audio/gg-thd.mp3");
+
+                                au2.play();
+                            } //点击后需要执行的回调(可选)
+                        })
+                        hotspots.push(hotspot)
+                        viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow(layer_1)
+
+                    } else {
+                        Qmsg.info("未选中模型")
+                    }
+
+                }
+            })
+
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object2 = object.object.name
+                var layer_2 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object2 == "wumenrd") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("wumenrd").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '午门',
+                            layer: layer_2 ,  //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                            onclick: () => {
+                                var au2 = new Audio("audio/gg-wm.mp3");
+                                au2.play();
+                            } //点击后需要执行的回调(可选)
+                        })
+                        hotspots.push( hotspot )
+                        viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_2 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "bhdredian") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("bhdredian").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '保和殿',
+                            onclick: () => {
+                                var au2 = new Audio("audio/gg-bhd.mp3");
+                                au2.play();
+                            }, //点击后需要执行的回调(可选)
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object1 = object.object.name
+                var layer_1 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object1 == "zhdredian") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        //viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("zhdredian").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '中和殿',
+                            onclick: () => {
+                                var au2 = new Audio("audio/gg-zhd.mp3");
+                                au2.play();
+                            }, //点击后需要执行的回调(可选)
+                            layer: layer_1   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        hotspots.push( hotspot )
+                        viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_1 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "qqmenredian") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("qqmenredian").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '乾清门',
+                            onclick: () => {
+                                var au2 = new Audio("audio/gg-qqm.mp3");
+                                au2.play();
+                            }, //点击后需要执行的回调(可选)
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "qqgdedian") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("qqgdedian").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '乾清宫',
+                            onclick: () => {
+                                var au2 = new Audio("audio/gg-qqg.mp3");
+                                au2.play();
+                            }, //点击后需要执行的回调(可选)
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "jtdredian") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("jtdredian").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '交泰殿',
+                            onclick: () => {
+                                var au2 = new Audio("audio/gg-jtd.mp3");
+                                au2.play();
+                            }, //点击后需要执行的回调(可选)
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "kngredian") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("kngredian").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '坤宁宫',
+                            onclick: () => {
+                                var au2 = new Audio("audio/gg-kng.mp3");
+                                au2.play();
+                            }, //点击后需要执行的回调(可选)
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "yhydedian") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("yhydedian").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '御花园',
+                            onclick: () => {
+                                var au2 = new Audio("audio/gg-yhy.mp3");
+                                au2.play();
+                            }, //点击后需要执行的回调(可选)
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "yxdredian") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("yxdredian").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '养心殿',
+                            onclick: () => {
+                                var au2 = new Audio("audio/gg-yxd.mp3");
+                                au2.play();
+                            }, //点击后需要执行的回调(可选)
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+
+                },
+
+            })
+
+
+
+    var video
+    //启用模型操作工具
+    viewer.operator.enabled = false
+
+
+
+
+    gui.add( { '整体解说': false }, '整体解说' ).onChange(function(value){
+        if( value ){
+            audio = document.createElement( 'audio' );
+            audio.src = 'audio/gugong.mp3';
+            audio.loop = true;
+            audio.play();
+        }else{
+            //设置null即可关闭解说
+            audio.pause();
+        }
+    })
+
+
+    gui.add({ '自动旋转': false }, '自动旋转').onChange(function (value) {
+        if( value ){
+            viewer.controls.startAutoRotate()
+        }else{
+            viewer.controls.stopAutoRotate()
+        }
+    })
+
+
+    /*
+    gui.add(new function () {
+        this['全显'] = function () {
+            viewer.hotSpotManager.showAll()
+        }
+    }, '全显')
+    */
+
+
+
+
+</script>

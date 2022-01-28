@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panorama appversion="6.0.1" apprev="17227" id="node1">
+  <input levelbias="0.400" cylinder="1" levelingpitch="0" overlap="1" levelingroll="0" flat="1" leveltilesize="510" levelbiashidpi="1.000" width="88008" height="4110" leveltileurl="tiles/node1/cf_%c/l_%l/c_%x/tile_%y.jpg">
+    <level preload="0" width="88008" predecode="0" height="4110"/>
+    <level preload="0" width="44004" predecode="0" height="2055"/>
+    <level preload="0" width="22002" predecode="0" height="1027"/>
+    <level preload="0" width="11001" predecode="0" height="513"/>
+    <level preload="0" width="5500" predecode="0" height="256"/>
+    <level preload="0" width="2750" predecode="0" height="128"/>
+    <level preload="0" width="1375" predecode="0" height="64"/>
+    <level preload="0" width="687" predecode="0" height="32"/>
+    <level preload="1" width="343" predecode="1" height="16"/>
+    <preview color="0x808080"/>
+  </input>
+  <view pannorth="0" fovmode="0">
+    <start tilt="0" fov="70" projection="4" pan="0"/>
+    <flyin tilt="-90" fov="170" projection="9" pan="0"/>
+    <min tilt="-90" fovpixel="2" pan="0"/>
+    <max tilt="90" fovstereographic="270" scaletofit="1" fov="120" fovfisheye="360" pan="360"/>
+  </view>
+  <userdata customnodeid="" author="" datetime="" latitude="" info="" copyright="" comment="" description="" source="" tags="hqtxt" longitude="" title=""/>
+  <hotspots wordwrap="1" width="60" height="0">
+    <label backgroundcolor="0xffaa00" borderalpha="1" textcolor="0x000000" backgroundalpha="1" textalpha="1" wordwrap="1" width="60" background="1" enabled="1" height="0" bordercolor="0x000000" border="1" borderradius="1"/>
+    <polystyle mode="0" backgroundcolor="0x0000ff" handcursor="1" borderalpha="1" backgroundalpha="0.2509803921568627" bordercolor="0x0000ff"/>
+    <hotspot skinid="ht_video_file" url="media/qmsht-hq.mp3" tilt="28.51" target="" description="这座状如飞虹的木结构无柱拱桥，描绘得十分细致，对于研究宋代营造工程和桥梁发展来说，异常珍贵。由于汴河的水暴涨暴落，几乎年年都会毁坏桥梁，造成灾害。而这座虹桥没有桥柱，不直接受到激流冲击，所以坚固耐用，五十年都不坏。无论从力学结构，还是外观和使用，都很完美。出人意料的是，这居然是由一个关押在监牢里的士兵发明的。后来，汴河上的桥都采用这种形式。在汴京城里就有两座。明清时代出现的《清明上河图》的仿本，将这座有特色的木拱桥，画成了石拱桥。" title="虹桥" id="Point01" pan="2.65"/>
+    <hotspot skinid="ht_video_file" url="media/qmsht-xyp.mp3" tilt="21.45" target="" description="街道的对角是家香铺，招牌上写着“刘家上色沉檀栋香”。香料在宋朝的进口货物中，占了相当的比例。所以宋朝的海外贸易又称为“香料贸易”。香料用在生活的诸多方面，成了茶、盐、矾之外，为政府获得巨额利润的大宗商品。它的销售也受官府的控制。" title="香药铺" id="Point02" pan="902.61"/>
+    <hotspot skinid="ht_video_file" url="media/qmsht-sdyl.mp3" tilt="-13.73" target="" description="汴河逐渐出现在画面当中。这条人工河开通于隋炀帝时期，因此，沿河的堤岸也叫隋堤。隋堤之上，盛植杨柳，叠翠成行，被后人誉为“汴京八景”之一。画中的柳树，树干古老苍劲，而枝头却是新发的枝桠。原来，堤上的柳树长到一定粗的时候，便会被砍去树梢，砍下的树枝被扎成捆，相连钉在汴河两岸，用来防洪抗险。因此，才形成了这样独特的风貌。" title="隋堤烟柳" id="Point03" pan="-736.34"/>
+    <hotspot skinid="ht_video_file" url="media/qmsht-nsss.mp3" tilt="8.36" target="_top" description="城市的发展，出现了广泛的市民阶层，相应地，出现了世俗化的文学艺术。北宋的娱乐业非常兴盛，有杂剧、唱曲、杂耍、傀儡戏、舞蹈、讲史、小说等等，而且有许多名角，相当于今天的“明星”。" title="闹市说书" id="Point04" pan="856.09"/>
+    <hotspot skinid="ht_video_file" url="media/qmsht-td.mp3" tilt="-11.51" target="" description="      城门里，一支骆驼队伍正在走出城门，第一只骆驼已经探出了多半个身子快要出城，而最后一只骆驼仍留在城内。前来汴京做买卖的，不仅是国内的商人，还不乏境外的客商。从西北方来的外国人，经常都是赶着骆驼队而来。根据史书记载，在宋代，阿拉伯的使者来中国共计二十六次，其中，还有一些使者都是商人冒充的，实际的目的是为了经商。" title="驼队" id="Point05" pan="657.16"/>
+    <hotspot skinid="ht_video_file" url="media/qmsht-gkrs.mp3" tilt="-7.75" target="" description="    宋朝大开科举考试之途，士农工商各阶层都可以通过科举博取功名。所以，每逢科举考试，汴京城里就住满了各地进京赶考的人。" title="赶考士人" id="Point06" pan="891.4"/>
+    <hotspot skinid="ht_video_file" url="media/qmsht-hhkc.mp3" tilt="11.55" target="" description="    在这一组航船中，有一艘装潢特别华丽，清一色的花格窗子，前后有两个门楼，船舷也比较宽。透过窗子，可以看到舱内有餐桌之类的家具，知道这是一艘大客船，不但有舒适的客舱，而且还可以在船上用餐。船主可能上岸去了，留下伙计们在忙活着收拾，等待着客人们来临。" title="豪华客船" id="Point07" pan="-215.24"/>
+  </hotspots>
+  <media>
+    <sound mode="3" nodechangekeep="0" tilt="4.510" field="90.000" startmutedmobile="0" tiltsize="10.000" level="1.000" pansize="10.000" id="Element01" pan="-358.810" loop="-1" ambientlevel="0.000">
+      <source url="media/qmsht-hq.mp3"/>
+    </sound>
+  </media>
+  <transition zoomout="0" blendcolor="0x000000" zoomspeed="2" softedge="0" type="crossdissolve" zoomfov="20" zoomoutpause="1" blendtime="1" zoomin="0" enabled="1"/>
+  <animation animsequence="Animation01" useinautorotation="0" syncanimationwithvideo="0"/>
+  <control simulatemass="1" invertwheel="0" contextprojections="0" contextfullscreen="1" lockedwheel="0" speedwheel="1" lockedkeyboard="0" hideabout="0" lockedmouse="0" dblclickfullscreen="0" sensitivity="8" rubberband="0" invertcontrol="1" lockedkeyboardzoom="0"/>
+</panorama>

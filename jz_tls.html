@@ -1,0 +1,1555 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>抬梁式结构建筑</title>
+    <script src="js/app.js"></script>
+    <script src="js/dat.gui.min.js"></script>
+    <script src="js/lib/message.min.js"></script>
+    <link rel="stylesheet" href="js/lib/message.css">
+    <link href="js/JS5.css" rel="stylesheet" type="text/css">
+
+</head>
+<style>
+    .hot-spot{
+        white-space: nowrap;
+        font-size: 15px;
+        background-color: rgba(255,198,0,0.8);
+        padding: 5px 8px;
+        border-radius: 3px;
+        cursor: pointer;
+        background-size: cover;
+        transform: translate3d(0px,-52px,0px);
+        user-select: none;
+
+    }
+    .hot-spot:hover{
+        box-shadow: 0 0 2px #FFF;
+    }
+
+    .hot-spot:after {
+        border: 5px solid transparent;
+        border-top: 50px solid rgba(255,198,0,0.7);
+        position: absolute;
+        content: "";
+        left: 50%;
+        margin-left: -5px;
+        top: 100%;
+    }
+
+
+
+
+</style>
+
+
+
+
+
+<body style="padding: 0; margin: 0;">
+<div id="container" style="width: 100%;height: 100vh;position:absolute;">
+
+
+
+
+
+</div>
+
+</body>
+</html>
+<script>
+    const gui = new dat.GUI()
+    const param = {
+        appkey: 'OfhRUlHbYuzj',
+        appsecret: 'bt9pxZcjPJG0aiUTlV2NEwCmXyR1DK3H'
+    }
+    //创建场景
+    const viewer = new AMRT.Viewer( 'container', param )
+
+
+    //加载模型热点
+    const model = viewer.loadModel('1482636093236056064', {
+        onLoad: function( model ){
+
+            viewer.materialEditor.setTarget( model )
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+               console.log(object.object.name)
+                var object1 = object.object.name
+                var layer_1 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object1 == "sanjialiang001") {
+                    //将屏幕坐标转换为三维坐标
+                    var p = viewer.picker.screenToVector(e)
+                    if (p) {
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("sanjialiang001").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '三架梁',
+                            layer: layer_1   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        hotspots.push(hotspot)
+                        viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow(layer_1)
+                        viewer.transform.setTarget( model.getObjectByName("sanjialiang001") )
+                    } else {
+                        Qmsg.info("未选中模型")
+                    }
+                }
+                    })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object1 = object.object.name
+                var layer_1 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object1 == "sanjialiang001") {
+                    //将屏幕坐标转换为三维坐标
+                    var p = viewer.picker.screenToVector(e)
+                    if (p) {
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("sanjialiang001").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '三架梁',
+                            layer: layer_1   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        hotspots.push(hotspot)
+                        viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow(layer_1)
+                        viewer.transform.setTarget( model.getObjectByName("sanjialiang001") )
+                    } else {
+                        Qmsg.info("未选中模型")
+                    }
+                }
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object2 = object.object.name
+                var layer_2 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object2 == "wujialiang001") {
+                        var p = viewer.picker.screenToVector(e)
+                        if( p ){
+                            //viewer.hotSpotManager.add会返回一个热点对象
+                            let hotspot = viewer.hotSpotManager.add({
+                                objectId: model.getObjectByName("wujialiang001").id,
+                                position: p,
+                                cameraView: viewer.controls.getView(),
+                                element: '五架梁',
+                                layer: layer_2   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                            })
+                            hotspots.push( hotspot )
+                            viewer.container.onclick = null
+                            viewer.hotSpotManager.onlyShow( layer_2 )
+                        }else{
+                            Qmsg.info(" ")
+                        }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object2 = object.object.name
+                var layer_2 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object2 == "wujialiang001") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("wujialiang001").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '五架梁',
+                            layer: layer_2   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        hotspots.push( hotspot )
+                        viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_2 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "shouwen") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("shouwen").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '兽吻',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "shouwen") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("shouwen").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '兽吻',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object1 = object.object.name
+                var layer_1 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object1 == "151chuiji001") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        //viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("151chuiji001").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '垂脊',
+                            layer: layer_1   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        hotspots.push( hotspot )
+                        viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_1 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object1 = object.object.name
+                var layer_1 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object1 == "151chuiji001") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        //viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("151chuiji001").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '垂脊',
+                            layer: layer_1   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        hotspots.push( hotspot )
+                        viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_1 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "81baotouqian") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("81baotouqian").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '抱头梁',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "81baotouqian") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("81baotouqian").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '抱头梁',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "yanliangfang001") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("yanliangfang001").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '檐梁枋',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "yanliangfang001") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("yanliangfang001").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '檐梁枋',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "chuanchafang") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("chuanchafang").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '穿插枋',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "chuanchafang") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("chuanchafang").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '穿插枋',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "SQD_wa02_abai071") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("SQD_wa02_abai071").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '筒板瓦',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "SQD_wa02_abai071") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("SQD_wa02_abai071").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '筒板瓦',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "zhenji") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("zhenji").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '正脊',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "zhenji") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("zhenji").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '正脊',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "yanlina") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("yanlina").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '檐檩',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "yanlina") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("yanlina").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '檐檩',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "guazhua001") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("guazhua001").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '瓜柱',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "guazhua001") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("guazhua001").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '瓜柱',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "yandianbana") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("yandianbana").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '檐垫板',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "yandianbana") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("yandianbana").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '檐垫板',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "yangfanga") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("yangfanga").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '檐枋',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "yangfanga") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("yangfanga").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '檐枋',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "laoyanlina001") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("laoyanlina001").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '老檐檩',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "laoyanlina001") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("laoyanlina001").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '老檐檩',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "laoyanlina001") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("laoyanlina001").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '老檐檩',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "laoyanlina001") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("laoyanlina001").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '老檐檩',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "laoyanfanga001") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("laoyanfanga001").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '老檐枋',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "laoyanfanga001") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("laoyanfanga001").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '老檐枋',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "Mesh104") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("Mesh104").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '上金檩',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "Mesh104") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("Mesh104").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '上金檩',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "Mesh104") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("Mesh104").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '上金檩',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "Mesh104") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("Mesh104").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '上金檩',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "Mesh85") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("Mesh85").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '上金垫板',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "Mesh85") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("Mesh85").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '上金垫板',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "Mesh86") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("Mesh86").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '上金枋',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "Mesh86") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("Mesh86").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '上金枋',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "jiguazhu") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("jiguazhu").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '脊瓜柱',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "jiguazhu") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("jiguazhu").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '脊瓜柱',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "Mesh101") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("Mesh101").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '脊檩',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "Mesh101") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("Mesh101").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '脊檩',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "Mesh87") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("Mesh87").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '脊垫板',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "Mesh87") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("Mesh87").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '脊垫板',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "wangzhu079") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("wangzhu079").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '椽',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "wangzhu079") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("wangzhu079").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '椽',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "feizi071") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("feizi071").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '苫背',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object3 = object.object.name
+                var layer_3 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object3 == "feizi071") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        viewer.hotSpotManager.add //会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("feizi071").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '苫背',
+                            layer: layer_3   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push( hotspot )
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_3 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+
+
+
+
+
+
+        },
+
+            })
+
+
+
+    var video
+    //启用模型操作工具
+    viewer.operator.enabled = true
+
+
+    gui.add({ '启用自由拆解': false }, '启用自由拆解').onChange(function (value) {
+        if( value ){
+            viewer.operator.enableDrag = true
+            viewer.materialEditor.setTarget( model )
+        }else{
+            viewer.operator.enableDrag = false
+            viewer.materialEditor.setTarget( null )
+        }
+    })
+
+    gui.add({ '拆分': 0 }, '拆分', 0, 1).step(0.2).onChange(function (value) {
+        //设置拆分比例
+        model.setExploding( value )
+    })
+
+    gui.add(new function () {
+        this['复位'] = function () {
+            viewer.operator.restore();
+        }
+    }, '复位');
+
+    gui.add(new function () {
+        this['隐藏'] = function () {
+            viewer.operator.hide();
+        }
+    }, '隐藏')
+
+    gui.add(new function () {
+        this['全显'] = function () {
+            viewer.operator.showAll();
+        }
+    }, '全显')
+
+
+
+
+</script>

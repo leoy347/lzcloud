@@ -1,0 +1,960 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>羊肉分割</title>
+    <script src="js/app.js"></script>
+    <script src="js/dat.gui.min.js"></script>
+    <script src="js/lib/message.min.js"></script>
+    <link rel="stylesheet" href="js/lib/message.css">
+    <link href="js/JS5.css" rel="stylesheet" type="text/css">
+
+</head>
+<style>
+    .hot-spot{
+        white-space: nowrap;
+        font-size: 15px;
+        background-color: rgba(255,198,0,0.8);
+        padding: 5px 8px;
+        border-radius: 3px;
+        cursor: pointer;
+        background-size: cover;
+        transform: translate3d(0px,-52px,0px);
+        user-select: none;
+
+    }
+    .hot-spot:hover{
+        box-shadow: 0 0 2px #FFF;
+    }
+
+    .hot-spot:after {
+        border: 5px solid transparent;
+        border-top: 50px solid rgba(255,198,0,0.7);
+        position: absolute;
+        content: "";
+        left: 50%;
+        margin-left: -5px;
+        top: 100%;
+    }
+
+
+
+
+</style>
+
+
+
+
+<body style="padding: 0; margin: 0;">
+
+<div id="container" style="width: 100%;height: 100vh;position:absolute;"></div>
+
+
+
+</body>
+</html>
+<script>
+    const gui = new dat.GUI()
+    const param = {
+        appkey: 'OfhRUlHbYuzj',
+        appsecret: 'bt9pxZcjPJG0aiUTlV2NEwCmXyR1DK3H'
+    }
+    const viewer = new AMRT.Viewer( 'container', param )
+    const model = viewer.loadModel('1472094081994854400', {
+        onLoad: function( model ) {
+        //热点加载
+
+            //颈肉
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object2 = object.object.name
+                var layer_2 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object2 == "11polySurface25") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("11polySurface25").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '颈肉',
+                            layer: layer_2 ,   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                            onclick: () => {
+                                Qmsg.success(
+                                    "颈肉：位于颈部。颈肉肉质较老，夹有细\n" +
+                                    "筋，适宜于红烧、酱、卤、炖等方法。"
+                                );
+                                var au2 = new Audio("audio/sheep_jr.mp3");
+                                au2.play();
+                            } //点击后需要执行的回调(可选)
+                        })
+                        hotspots.push( hotspot )
+                        viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_2 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object2 = object.object.name
+                var layer_2 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object2 == "11polySurface25") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("11polySurface25").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '颈肉',
+                            layer: layer_2 ,   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                            onclick: () => {
+                                Qmsg.success(
+                                    "颈肉：位于颈部。颈肉肉质较老，夹有细\n" +
+                                    "筋，适宜于红烧、酱、卤、炖等方法。"
+                                );
+                                var au2 = new Audio("audio/sheep_jr.mp3");
+                                au2.play();
+                            } //点击后需要执行的回调(可选)
+                        })
+                        hotspots.push( hotspot )
+                        viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_2 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            //前腿
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object2 = object.object.name
+                var layer_2 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object2 == "11polySurface24") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("11polySurface24").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '前腿',
+                            layer: layer_2 ,   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                            onclick: () => {
+                                Qmsg.success(
+                                    "前腿：又称哈力巴，位于颈部后，胸前腱\n" +
+                                    "子上部，相当于猪的前肘。该肉脆嫩，肥多瘦\n" +
+                                    "少、且筋少，适宜于烧，扒、卤、酱等烹调方\n" +
+                                    "法。"
+                                );
+                                var au2 = new Audio("audio/sheep_qt.mp3");
+                                au2.play();
+                            } //点击后需要执行的回调(可选)
+                        })
+                        hotspots.push( hotspot )
+                        viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_2 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object2 = object.object.name
+                var layer_2 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object2 == "11polySurface24") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("11polySurface24").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '前腿',
+                            layer: layer_2 ,   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                            onclick: () => {
+                                Qmsg.success(
+                                    "前腿：又称哈力巴，位于颈部后，胸前腱\n" +
+                                    "子上部，相当于猪的前肘。该肉脆嫩，肥多瘦\n" +
+                                    "少、且筋少，适宜于烧，扒、卤、酱等烹调方\n" +
+                                    "法。"
+                                );
+                                var au2 = new Audio("audio/sheep_qt.mp3");
+                                au2.play();
+                            } //点击后需要执行的回调(可选)
+                        })
+                        hotspots.push( hotspot )
+                        viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_2 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            //前腱子
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object2 = object.object.name
+                var layer_2 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object2 == "11polySurface23") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("11polySurface23").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '前腱子',
+                            layer: layer_2 ,   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                            onclick: () => {
+                                Qmsg.success(
+                                    "前腱子：位于羊的前膝下部，前羊蹄上部。\n" +
+                                    "该部肉质较老，肉中夹筋，适宜于酱、炖、煨\n" +
+                                    "等烹调方法。"
+                                );
+                                var au2 = new Audio("audio/sheep_qjz.mp3");
+                                au2.play();
+                            } //点击后需要执行的回调(可选)
+                        })
+                        hotspots.push( hotspot )
+                        viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_2 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object2 = object.object.name
+                var layer_2 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object2 == "11polySurface23") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("11polySurface23").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '前腱子',
+                            layer: layer_2 ,   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                            onclick: () => {
+                                Qmsg.success(
+                                    "前腱子：位于羊的前膝下部，前羊蹄上部。\n" +
+                                    "该部肉质较老，肉中夹筋，适宜于酱、炖、煨\n" +
+                                    "等烹调方法。"
+                                );
+                                var au2 = new Audio("audio/sheep_qjz.mp3");
+                                au2.play();
+                            } //点击后需要执行的回调(可选)
+                        })
+                        hotspots.push( hotspot )
+                        viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_2 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            //脊背
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object2 = object.object.name
+                var layer_2 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object2 == "11polySurface9") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("11polySurface9").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '脊背',
+                            layer: layer_2 ,   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                            onclick: () => {
+                                Qmsg.success(
+                                    "脊背：包括里脊和外脊。里脊呈细长条形，\n" +
+                                    "是羊身上最嫩的一块肉。外脊又称条脊肉，通\n" +
+                                    "脊肉、担杖肉、扁担肉等，位于脊骨外，呈长\n" +
+                                    "条形，外有一层筋，肉质细嫩。脊背是羊肉中\n" +
+                                    "应用最广泛的两块肉（脊背、后腿）之一，可\n" +
+                                    "切丁、丝、条、片、块等，一般可用于炒、炸、\n" +
+                                    "熘、涮等烹调方法。"
+                                );
+                                var au2 = new Audio("audio/sheep_jb.mp3");
+                                au2.play();
+                            } //点击后需要执行的回调(可选)
+                        })
+                        hotspots.push( hotspot )
+                        viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_2 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object2 = object.object.name
+                var layer_2 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object2 == "11polySurface9") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("11polySurface9").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '脊背',
+                            layer: layer_2 ,   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                            onclick: () => {
+                                Qmsg.success(
+                                    "脊背：包括里脊和外脊。里脊呈细长条形，\n" +
+                                    "是羊身上最嫩的一块肉。外脊又称条脊肉，通\n" +
+                                    "脊肉、担杖肉、扁担肉等，位于脊骨外，呈长\n" +
+                                    "条形，外有一层筋，肉质细嫩。脊背是羊肉中\n" +
+                                    "应用最广泛的两块肉（脊背、后腿）之一，可\n" +
+                                    "切丁、丝、条、片、块等，一般可用于炒、炸、\n" +
+                                    "熘、涮等烹调方法。"
+                                );
+                                var au2 = new Audio("audio/sheep_jb.mp3");
+                                au2.play();
+                            } //点击后需要执行的回调(可选)
+                        })
+                        hotspots.push( hotspot )
+                        viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_2 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+
+            //肋条
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object2 = object.object.name
+                var layer_2 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object2 == "rig1_polySurface47") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("rig1_polySurface47").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '肋条',
+                            layer: layer_2 ,   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                            onclick: () => {
+                                Qmsg.success(
+                                    "肋条：位于助骨外的肉，呈方形、无筋，\n" +
+                                    "肥瘦间有。肋条可用于炒、烧、烤、涮、焖\n" +
+                                    "等烹调方法。"
+                                );
+                                var au2 = new Audio("audio/sheep_lt.mp3");
+                                au2.play();
+                            } //点击后需要执行的回调(可选)
+                        })
+                        hotspots.push( hotspot )
+                        viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_2 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object2 = object.object.name
+                var layer_2 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object2 == "rig1_polySurface47") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("rig1_polySurface47").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '肋条',
+                            layer: layer_2 ,   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                            onclick: () => {
+                                Qmsg.success(
+                                    "肋条：位于助骨外的肉，呈方形、无筋，\n" +
+                                    "肥瘦间有。肋条可用于炒、烧、烤、涮、焖\n" +
+                                    "等烹调方法。"
+                                );
+                                var au2 = new Audio("audio/sheep_lt.mp3");
+                                au2.play();
+                            } //点击后需要执行的回调(可选)
+                        })
+                        hotspots.push( hotspot )
+                        viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_2 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            //胸脯
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object2 = object.object.name
+                var layer_2 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object2 == "11polySurface12") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("11polySurface12").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '胸脯',
+                            layer: layer_2 ,   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                            onclick: () => {
+                                Qmsg.success(
+                                    "胸脯：包括胸脯肉和腰窝。胸脯肉位于腹\n" +
+                                    "部，肉质肥多瘦少，无筋，适宜于烤、烧、焖、\n" +
+                                    "扒等烹调方法。腰窝肉位于腹部肋骨后近腰窝\n" +
+                                    "处，肌纤维长短纵横不一，肉内夹有三层筋膜，\n" +
+                                    "肉质较老，适宜于酱、卤、炖等烹调方法。"
+                                );
+                                var au2 = new Audio("audio/sheep_xp.mp3");
+                                au2.play();
+                            } //点击后需要执行的回调(可选)
+                        })
+                        hotspots.push( hotspot )
+                        viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_2 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object2 = object.object.name
+                var layer_2 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object2 == "11polySurface12") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("11polySurface12").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '胸脯',
+                            layer: layer_2 ,   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                            onclick: () => {
+                                Qmsg.success(
+                                    "胸脯：包括胸脯肉和腰窝。胸脯肉位于腹\n" +
+                                    "部，肉质肥多瘦少，无筋，适宜于烤、烧、焖、\n" +
+                                    "扒等烹调方法。腰窝肉位于腹部肋骨后近腰窝\n" +
+                                    "处，肌纤维长短纵横不一，肉内夹有三层筋膜，\n" +
+                                    "肉质较老，适宜于酱、卤、炖等烹调方法。"
+                                );
+                                var au2 = new Audio("audio/sheep_xp.mp3");
+                                au2.play();
+                            } //点击后需要执行的回调(可选)
+                        })
+                        hotspots.push( hotspot )
+                        viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_2 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            //大三叉
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object2 = object.object.name
+                var layer_2 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object2 == "rig1_pCube4") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("rig1_pCube4").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '大三叉',
+                            layer: layer_2 ,   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                            onclick: () => {
+                                Qmsg.success(
+                                    "大三叉位于臀尖处，该肉肥瘦各半，肉质\n" +
+                                    "较嫩，可代替里脊使用。磨档肉位于两腿档部\n" +
+                                    "相磨处，形如碗状，肌纤维纵横不一，肉质较\n" +
+                                    "粗松，适宜于烤、炸、涮等烹调方法。"
+                                );
+                                var au2 = new Audio("audio/sheep_dsc.mp3");
+                                au2.play();
+                            } //点击后需要执行的回调(可选)
+                        })
+                        hotspots.push( hotspot )
+                        viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_2 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object2 = object.object.name
+                var layer_2 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object2 == "rig1_pCube4") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("rig1_pCube4").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '大三叉',
+                            layer: layer_2 ,   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                            onclick: () => {
+                                Qmsg.success(
+                                    "大三叉位于臀尖处，该肉肥瘦各半，肉质\n" +
+                                    "较嫩，可代替里脊使用。磨档肉位于两腿档部\n" +
+                                    "相磨处，形如碗状，肌纤维纵横不一，肉质较\n" +
+                                    "粗松，适宜于烤、炸、涮等烹调方法。"
+                                );
+                                var au2 = new Audio("audio/sheep_dsc.mp3");
+                                au2.play();
+                            } //点击后需要执行的回调(可选)
+                        })
+                        hotspots.push( hotspot )
+                        viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_2 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            //黄瓜条
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object2 = object.object.name
+                var layer_2 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object2 == "rig1_pCube3") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("rig1_pCube3").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '黄瓜条',
+                            layer: layer_2 ,   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                            onclick: () => {
+                                Qmsg.success(
+                                    "黄瓜条与磨裆肉相连，呈长条形，肉质细\n" +
+                                    "嫩，可制多种菜肴。"
+                                );
+                                var au2 = new Audio("audio/sheep_hgt.mp3");
+                                au2.play();
+                            } //点击后需要执行的回调(可选)
+                        })
+                        hotspots.push( hotspot )
+                        viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_2 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object2 = object.object.name
+                var layer_2 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object2 == "rig1_pCube3") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("rig1_pCube3").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '黄瓜条',
+                            layer: layer_2 ,   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                            onclick: () => {
+                                Qmsg.success(
+                                    "黄瓜条与磨裆肉相连，呈长条形，肉质细\n" +
+                                    "嫩，可制多种菜肴。"
+                                );
+                                var au2 = new Audio("audio/sheep_hgt.mp3");
+                                au2.play();
+                            } //点击后需要执行的回调(可选)
+                        })
+                        hotspots.push( hotspot )
+                        viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_2 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            //坐臀
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object2 = object.object.name
+                var layer_2 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object2 == "pCube5") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("pCube5").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '坐臀',
+                            layer: layer_2 ,   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                            onclick: () => {
+                                Qmsg.success(
+                                    "坐臀又称坐板，位于后腿紧贴肉皮的一块\n" +
+                                    "呈梯形的肉，前后薄，中间厚，全部为瘦肉，\n" +
+                                    "肉质稍老，肌纤维较长，可切丁、丝、条、\n" +
+                                    "块等、一般可用于炒、酱、烧等烹调方法。"
+                                );
+                                var au2 = new Audio("audio/sheep_zt.mp3");
+                                au2.play();
+                            } //点击后需要执行的回调(可选)
+                        })
+                        hotspots.push( hotspot )
+                        viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_2 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object2 = object.object.name
+                var layer_2 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object2 == "pCube5") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("pCube5").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '坐臀',
+                            layer: layer_2 ,   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                            onclick: () => {
+                                Qmsg.success(
+                                    "坐臀又称坐板，位于后腿紧贴肉皮的一块\n" +
+                                    "呈梯形的肉，前后薄，中间厚，全部为瘦肉，\n" +
+                                    "肉质稍老，肌纤维较长，可切丁、丝、条、\n" +
+                                    "块等、一般可用于炒、酱、烧等烹调方法。"
+                                );
+                                var au2 = new Audio("audio/sheep_zt.mp3");
+                                au2.play();
+                            } //点击后需要执行的回调(可选)
+                        })
+                        hotspots.push( hotspot )
+                        viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_2 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            //后腱子
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object2 = object.object.name
+                var layer_2 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object2 == "11polySurface20") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("11polySurface20").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '后腱子',
+                            layer: layer_2 ,   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                            onclick: () => {
+                                Qmsg.success(
+                                    "后腱子：是羊的后膝下部，蹄的上部部分。\n" +
+                                    "后腱子肉紧凑，肉质较老，筋膜较多，适于酱、\n" +
+                                    "煮、烧等烹调方法。"
+                                );
+                                var au2 = new Audio("audio/sheep_zt.mp3");
+                                au2.play();
+                            } //点击后需要执行的回调(可选)
+                        })
+                        hotspots.push( hotspot )
+                        viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_2 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object2 = object.object.name
+                var layer_2 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object2 == "11polySurface20") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("11polySurface20").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '后腱子',
+                            layer: layer_2 ,   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                            onclick: () => {
+                                Qmsg.success(
+                                    "后腱子：是羊的后膝下部，蹄的上部部分。\n" +
+                                    "后腱子肉紧凑，肉质较老，筋膜较多，适于酱、\n" +
+                                    "煮、烧等烹调方法。"
+                                );
+                                var au2 = new Audio("audio/sheep_zt.mp3");
+                                au2.play();
+                            } //点击后需要执行的回调(可选)
+                        })
+                        hotspots.push( hotspot )
+                        viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_2 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+            //磨裆肉
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object2 = object.object.name
+                var layer_2 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object2 == "rig1_pCube5") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("rig1_pCube5").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '磨裆肉',
+                            layer: layer_2    //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+
+                        })
+                        hotspots.push( hotspot )
+                        viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_2 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object2 = object.object.name
+                var layer_2 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object2 == "rig1_pCube5") {
+                    var p = viewer.picker.screenToVector(e)
+                    if( p ){
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("rig1_pCube5").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '磨裆肉',
+                            layer: layer_2    //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+
+                        })
+                        hotspots.push( hotspot )
+                        viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow( layer_2 )
+                    }else{
+                        Qmsg.info(" ")
+                    }
+
+                }
+
+
+            })
+
+
+
+
+
+    },
+
+    })
+
+
+    var video
+    //启用模型操作工具
+    viewer.operator.enabled = true
+
+
+
+    gui.add({ '启用自由拆解': false }, '启用自由拆解').onChange(function (value) {
+        if( value ){
+            viewer.operator.enableDrag = true
+            viewer.materialEditor.setTarget( model )
+        }else{
+            viewer.operator.enableDrag = false
+            viewer.materialEditor.setTarget( null )
+        }
+    })
+
+
+    gui.add({ '拆分': 0 }, '拆分', 0, 0.3).step(0.1).onChange(function (value) {
+        //设置拆分比例
+        model.setExploding( value )
+    })
+
+    gui.add(new function () {
+        this['复位'] = function () {
+            viewer.operator.restore();
+        }
+    }, '复位');
+
+    gui.add(new function () {
+        this['隐藏'] = function () {
+            viewer.operator.hide();
+        }
+    }, '隐藏')
+
+    gui.add(new function () {
+        this['全显'] = function () {
+            viewer.operator.showAll();
+        }
+    }, '全显')
+
+    gui.add(new function () {
+        this['关闭标签'] = function () {
+            viewer.hotSpotManager.hideAll();
+        }
+    }, '关闭标签')
+
+</script>

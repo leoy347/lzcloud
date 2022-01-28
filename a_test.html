@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三星堆·戴金面罩铜人头像</title>
+    <script src="js/app.js"></script>
+    <script src="js/dat.gui.min.js"></script>
+    <script src="js/lib/message.min.js"></script>
+    <link rel="stylesheet" href="js/lib/message.css">
+</head>
+<body style="padding: 0; margin: 0;">
+<div id="container" style="width: 100%;height: 100vh;" />
+
+
+
+</div>
+</body>
+</html>
+<script>
+    const gui = new dat.GUI()
+
+    /*远程加载
+    const gui = new dat.GUI()
+    const param = {
+        appkey: 'OfhRUlHbYuzj',
+        appsecret: 'bt9pxZcjPJG0aiUTlV2NEwCmXyR1DK3H'
+    }
+    const viewer = new AMRT.Viewer( 'container', param )
+    const model = viewer.loadModel('1470429306323865600')
+    */
+
+    //本地加载模型
+    let viewer = new AMRT.Viewer( document.getElementById( 'container' ), { offline: true } )
+    viewer.loadModel('models/sxd/', { offline: true })
+
+
+    gui.add( { '音频解说': false }, '音频解说' ).onChange(function(value){
+        if( value ){
+            audio = document.createElement( 'audio' );
+            audio.src = 'audio/sxd.mp3';
+            audio.loop = true;
+            audio.play();
+        }else{
+            //设置null即可关闭解说
+            audio.pause();
+        }
+    })
+
+
+    gui.add({ '自动旋转': false }, '自动旋转').onChange(function (value) {
+        if( value ){
+            viewer.controls.startAutoRotate()
+        }else{
+            viewer.controls.stopAutoRotate()
+        }
+    })
+</script>
+

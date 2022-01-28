@@ -1,0 +1,463 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>福建永庆·承启楼</title>
+    <script src="js/app.js"></script>
+    <script src="js/dat.gui.min.js"></script>
+    <script src="js/lib/message.min.js"></script>
+    <link rel="stylesheet" href="js/lib/message.css">
+</head>
+<style>
+    .hot-spot{
+        white-space: nowrap;
+        font-size: 15px;
+        background-color: rgba(255,198,0,0.8);
+        padding: 5px 8px;
+        border-radius: 3px;
+        cursor: pointer;
+        background-size: cover;
+        transform: translate3d(0px,-52px,0px);
+        user-select: none;
+
+    }
+    .hot-spot:hover{
+        box-shadow: 0 0 2px #FFF;
+    }
+
+    .hot-spot:after {
+        border: 5px solid transparent;
+        border-top: 50px solid rgba(255,198,0,0.7);
+        position: absolute;
+        content: "";
+        left: 50%;
+        margin-left: -5px;
+        top: 100%;
+    }
+
+
+
+
+</style>
+
+<body style="padding: 0; margin: 0;">
+<div id="container" style="width: 100%;height: 100vh;" />
+</body>
+</html>
+<script>
+    const gui = new dat.GUI()
+    const param = {
+        appkey: 'OfhRUlHbYuzj',
+        appsecret: 'bt9pxZcjPJG0aiUTlV2NEwCmXyR1DK3H'
+    }
+    const viewer = new AMRT.Viewer( 'container', param )
+    const model = viewer.loadModel('1486040732576911360',{
+        onLoad: function( model ){
+
+
+            //viewer.materialEditor.setTarget( model )
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object1 = object.object.name
+                var layer_1 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object1 == "101waibu") {
+                    //将屏幕坐标转换为三维坐标
+                    var p = viewer.picker.screenToVector(e)
+                    if (p) {
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("101waibu").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '外部土墙',
+                            layer: layer_1   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push(hotspot)
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow(layer_1)
+
+                    } else {
+                        Qmsg.info("未选中模型")
+                    }
+
+                }
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object1 = object.object.name
+                var layer_1 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object1 == "101waibu") {
+                    //将屏幕坐标转换为三维坐标
+                    var p = viewer.picker.screenToVector(e)
+                    if (p) {
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("101waibu").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '外部土墙',
+                            layer: layer_1   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        //hotspots.push(hotspot)
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow(layer_1)
+
+                    } else {
+                        Qmsg.info("未选中模型")
+                    }
+
+                }
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object1 = object.object.name
+                var layer_1 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object1 == "11w4c") {
+                    //将屏幕坐标转换为三维坐标
+                    var p = viewer.picker.screenToVector(e)
+                    if (p) {
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("11w4c").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '外圈4层',
+                            layer: layer_1   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        // hotspots.push(hotspot)
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow(layer_1)
+
+                    } else {
+                        Qmsg.info("未选中模型")
+                    }
+
+                }
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object1 = object.object.name
+                var layer_1 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object1 == "11w4c") {
+                    //将屏幕坐标转换为三维坐标
+                    var p = viewer.picker.screenToVector(e)
+                    if (p) {
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("11w4c").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '外圈4层',
+                            layer: layer_1   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        // hotspots.push(hotspot)
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow(layer_1)
+
+                    } else {
+                        Qmsg.info("未选中模型")
+                    }
+
+                }
+            })
+
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object1 = object.object.name
+                var layer_1 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object1 == "21quan02") {
+                    //将屏幕坐标转换为三维坐标
+                    var p = viewer.picker.screenToVector(e)
+                    if (p) {
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("21quan02").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '第二圈2层',
+                            layer: layer_1   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        // hotspots.push(hotspot)
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow(layer_1)
+
+                    } else {
+                        Qmsg.info("未选中模型")
+                    }
+
+                }
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object1 = object.object.name
+                var layer_1 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object1 == "21quan02") {
+                    //将屏幕坐标转换为三维坐标
+                    var p = viewer.picker.screenToVector(e)
+                    if (p) {
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("21quan02").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '第二圈2层',
+                            layer: layer_1   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        // hotspots.push(hotspot)
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow(layer_1)
+
+                    } else {
+                        Qmsg.info("未选中模型")
+                    }
+
+                }
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object1 = object.object.name
+                var layer_1 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object1 == "21quan03") {
+                    //将屏幕坐标转换为三维坐标
+                    var p = viewer.picker.screenToVector(e)
+                    if (p) {
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("21quan03").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '第三圈单层',
+                            layer: layer_1   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        // hotspots.push(hotspot)
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow(layer_1)
+
+                    } else {
+                        Qmsg.info("未选中模型")
+                    }
+
+                }
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object1 = object.object.name
+                var layer_1 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object1 == "21quan03") {
+                    //将屏幕坐标转换为三维坐标
+                    var p = viewer.picker.screenToVector(e)
+                    if (p) {
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("21quan03").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '第三圈单层',
+                            layer: layer_1   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        // hotspots.push(hotspot)
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow(layer_1)
+
+                    } else {
+                        Qmsg.info("未选中模型")
+                    }
+
+                }
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object1 = object.object.name
+                var layer_1 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object1 == "21zhongxin") {
+                    //将屏幕坐标转换为三维坐标
+                    var p = viewer.picker.screenToVector(e)
+                    if (p) {
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("21zhongxin").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '中心祖堂',
+                            layer: layer_1   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        // hotspots.push(hotspot)
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow(layer_1)
+
+                    } else {
+                        Qmsg.info("未选中模型")
+                    }
+
+                }
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object1 = object.object.name
+                var layer_1 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object1 == "21zhongxin") {
+                    //将屏幕坐标转换为三维坐标
+                    var p = viewer.picker.screenToVector(e)
+                    if (p) {
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("21zhongxin").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '中心祖堂',
+                            layer: layer_1   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        // hotspots.push(hotspot)
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow(layer_1)
+
+                    } else {
+                        Qmsg.info("未选中模型")
+                    }
+
+                }
+            })
+
+            viewer.container.addEventListener( 'touchstart', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object1 = object.object.name
+                var layer_1 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object1 == "41wuding") {
+                    //将屏幕坐标转换为三维坐标
+                    var p = viewer.picker.screenToVector(e)
+                    if (p) {
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("41wuding").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '屋顶',
+                            layer: layer_1   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        // hotspots.push(hotspot)
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow(layer_1)
+
+                    } else {
+                        Qmsg.info("未选中模型")
+                    }
+
+                }
+            })
+            viewer.container.addEventListener( 'click', e => {
+                //通过鼠标拾取模型对象
+                var object = viewer.picker.intersectObject(e)
+                console.log(object.object.name)
+                var object1 = object.object.name
+                var layer_1 = viewer.hotSpotManager.createLayer(), hotspots = []
+                if (object1 == "41wuding") {
+                    //将屏幕坐标转换为三维坐标
+                    var p = viewer.picker.screenToVector(e)
+                    if (p) {
+                        //viewer.hotSpotManager.add会返回一个热点对象
+                        let hotspot = viewer.hotSpotManager.add({
+                            objectId: model.getObjectByName("41wuding").id,
+                            position: p,
+                            cameraView: viewer.controls.getView(),
+                            element: '屋顶',
+                            layer: layer_1   //传入图层 layer_1 后，该热点创建完成后会被放入到图层 layer_1
+                        })
+                        // hotspots.push(hotspot)
+                        //viewer.container.onclick = null
+                        viewer.hotSpotManager.onlyShow(layer_1)
+
+                    } else {
+                        Qmsg.info("未选中模型")
+                    }
+
+                }
+            })
+
+        },
+
+    })
+    var video
+
+
+
+
+    gui.add(new function () {
+        this['拆分'] = function () {
+            model.animation.play()
+            model.animation.setLoop(false)
+            var timer1 = setTimeout(function () {
+                model.animation.pause()
+            }, 1000);  //timer1->1 (当前是第一个定时器)
+        }
+    }, '拆分')
+
+    gui.add(new function () {
+        this['复位'] = function () {
+            viewer.operator.restore();
+            model.animation.stop()
+        }
+    }, '复位');
+
+    gui.add(new function () {
+        this['隐藏'] = function () {
+            viewer.operator.hide();
+        }
+    }, '隐藏')
+
+    gui.add(new function () {
+        this['全显'] = function () {
+            viewer.operator.showAll();
+        }
+    }, '全显')
+
+    gui.add(new function () {
+        this['关闭标签'] = function () {
+            viewer.hotSpotManager.hideAll();
+        }
+    }, '关闭标签')
+
+    var clipping
+    gui.add( { '剖面': false }, '剖面' ).onChange( function ( value ) {
+        if( value ){
+            viewer.operator.enableDrag = false
+            //初始化裁切控件
+            clipping = new AMRT.Clipping( viewer, model )
+            //启用
+            clipping.enabled = true
+        }else{
+            //禁用裁切控件
+            clipping.enabled = false
+            viewer.operator.enableDrag = true
+        }
+    })
+
+</script>
